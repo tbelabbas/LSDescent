@@ -7,6 +7,8 @@ using LinearAlgebra
 using Stopping
 using OneDmin
 
+using Plots
+using Colors
 
 include("../../src/BFGS/BFGS.jl")
 include("bfgs_Stop_compare.jl")
