@@ -4,8 +4,12 @@ using Logging
 using NLPModels
 using StatsPlots
 using Distributed
+using LinearAlgebra
 using LinearOperators
 using OptimizationProblems
+
+using OneDmin
+using Stopping
 
 include("../../src/BFGS/BFGS.jl")
 
