@@ -94,25 +94,25 @@ end
 j = length(All_B)
 
 for i in 1:min(j, length(All_Bb), length(All_Bc), length(All_Bch))
-    h = plot(Gray.(Matrix(All_B[i])-Matrix(All_Bc[i])))
-    png("compact_lbfgs_BEFORE_iter$(i)")
+    h = heatmap(Gray.(Matrix(All_B[i])-Matrix(All_Bc[i])))
+    png("compact_BEFORE_iter$(i)")
 
-    h = plot(Gray.(Matrix(All_B[i])-Matrix(All_Bb[i])))
-    png("bfgs_lbfgs_BEFORE_iter_$(i)")
+    h = heatmap(Gray.(Matrix(All_B[i])-Matrix(All_Bb[i])))
+    png("bfgs_BEFORE_iter_$(i)")
 
-    h = plot(Gray.(Matrix(All_B[i])-Matrix(All_Bch[i])))
-    png("cholesky_lbfgs_BEFORE_iter_$(i)")
+    h = heatmap(Gray.(Matrix(All_B[i])-Matrix(All_Bch[i])))
+    png("cholesky_BEFORE_iter_$(i)")
 
-    h = plot(Gray.(log(Matrix(All_B[i])-Matrix(All_B[i]))))
-    png("lbfgs_lbfgs_BEFORE_iter_$(i)")
+    h = heatmap(Gray.((Matrix(All_B[i])-Matrix(All_B[i]))))
+    png("lbfgs_BEFORE_iter_$(i)")
 end
 
 for i in j:length(All_Bb)
-    h = plot(Gray.(Matrix(All_B[j])-Matrix(All_Bb[i])))
-    png("AFTER_bfgs_lbfgs_iter_$(i)")
+    h = heatmap(Gray.(Matrix(All_B[j])-Matrix(All_Bb[i])))
+    png("AFTER_bfgs_iter_$(i)")
 end
 
 for i in j:length(All_Bch)
-    h = plot(Gray.(Matrix(All_B[j])-Matrix(All_Bch[i])))
-    png("AFTER_cholesky_lbfgs_iter_$(i)")
+    h = heatmap(Gray.(Matrix(All_B[j])-Matrix(All_Bch[i])))
+    png("AFTER_cholesky_iter_$(i)")
 end

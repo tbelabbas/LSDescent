@@ -90,7 +90,7 @@ function bfgsA(nlp :: AbstractNLPModel,
 
             OK = update_and_stop!(stp, x = x, gx = ∇f, fx=f)
 
-            push!(All_B, B)
+            push!(All_B, Matrix(B))
         end
 
         #@show f
