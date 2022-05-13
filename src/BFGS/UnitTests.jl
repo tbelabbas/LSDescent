@@ -22,10 +22,15 @@ LB = push!(LB,y,s);
 CB = CompactInverseBFGSOperator(5, scaling = false, mem = 7);
 CB = push!(CB,y,s);
 
+CH = ChBFGSOperator(Float64, n; scaling = false)
+CH = push!(CH,y,s)
+
+
 using Test
 @info "Premiers tests"
 @test Matrix(B1) ≈ Matrix(LB)
 @test Matrix(B1) ≈ Matrix(CB)
+@test Matrix(B1) ≈ Matrix(CH)
 
 y = [-3;2.0;3;1;1]
 s = [-1;2.0;-1;1;1]
@@ -33,12 +38,14 @@ s = [-1;2.0;-1;1;1]
 B1 = push!(B1,y,s);
 LB = push!(LB,y,s);
 CB = push!(CB,y,s);
+CH = push!(CH,y,s);
 
 @info "Seconds tests"
 @test Matrix(B1) ≈ Matrix(LB)
 @test Matrix(B1) ≈ Matrix(CB)
+@test Matrix(B1) ≈ Matrix(CH)
 
-let s=s, y=y, B1=B1, LB = LB, CB = CB
+let s=s, y=y, B1=B1, LB = LB, CB = CB, CH = CH
     for i=1:5
         @info i
         s = [s[5];s[1:4]]
@@ -47,11 +54,14 @@ let s=s, y=y, B1=B1, LB = LB, CB = CB
         B1 = push!(B1,y,s);
         LB = push!(LB,y,s);
         CB = push!(CB,y,s);
+        CH = push!(CH,y,s);
 
         @info "B1=LB"
         @test Matrix(B1) ≈ Matrix(LB)
         @info "B1=CB"
         @test Matrix(B1) ≈ Matrix(CB)
+        @info "B1=CH"
+        @test Matrix(B1) ≈ Matrix(CH)
     end
 end
 
@@ -81,12 +91,15 @@ d3 = - CB * x
 p1 = - (B1 * x)
 p2 = - (LB * x)
 p3 = - (CB * x)
+p4 = - (CH * x)
 
 
 @info "pB=pLB"
 @test p1 ≈ p2
 @info "pB=pCB"
 @test p1 ≈ p3
+@info "pB=pChB"
+@test p1 ≈ p4
 
 
 @info "dB=pB"

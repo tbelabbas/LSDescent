@@ -103,7 +103,7 @@ for i in 1:min(j, length(All_Bb), length(All_Bc), length(All_Bch))
     h = plot(Gray.(Matrix(All_B[i])-Matrix(All_Bch[i])))
     png("cholesky_lbfgs_BEFORE_iter_$(i)")
 
-    h = plot(Gray.(Matrix(All_B[i])-Matrix(All_B[i])))
+    h = plot(Gray.(log(Matrix(All_B[i])-Matrix(All_B[i]))))
     png("lbfgs_lbfgs_BEFORE_iter_$(i)")
 end
 

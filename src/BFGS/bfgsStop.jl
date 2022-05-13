@@ -25,7 +25,7 @@ function bfgs_Stop(nlp :: AbstractNLPModel;
     B = AcceptAll(T, n, B₀)
     stp.stopping_user_struct["BFGS"] = B
 
-    @show B.data.scaling
+    #@show B.data.scaling
 
     τ₀ = 0.0005
     τ₁ = 0.9999

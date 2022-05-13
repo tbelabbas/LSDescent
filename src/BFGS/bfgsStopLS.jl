@@ -33,7 +33,7 @@ function bfgs_StopLS(nlp       :: AbstractNLPModel{T, S};
 
     B = AcceptAll(T, n, B₀)
 
-    @show B.data.scaling
+    #@show B.data.scaling
 
     #B = InverseBFGSOperator(T, n)
     #B = one(eltype(x))*I
